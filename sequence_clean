@@ -1,0 +1,22 @@
+#!/usr/bin/perl -w
+@list = glob("./*.fa");
+foreach $list(@list){
+        if ($list =~ /\.\/(\S*).fa$/){
+                $title = $1;
+                #@title = split(/\./, $title);
+                #$name = $title[0].".".$title[1];
+                print "$title";
+        }
+        open (IN,"./$title.fa");
+        open (OUT,">./clean/$title.fa");
+        while ($line = <IN>){
+                chomp $line;
+                if($line =~ />/){
+                        @line = split(/\s+/,$line);
+                        print OUT "$line[0]\n";
+                }
+                else{
+                        print OUT "$line\n";
+                }
+        }
+}
