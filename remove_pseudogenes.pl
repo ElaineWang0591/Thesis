@@ -2,13 +2,13 @@
 use strict;
 use warnings;
 
-my $protein_file = ;
+my $protein_file = ; # Add file name
 chomp($protein_file);
 
-my $id_file =  ;
+my $id_file =  ; # Add file name
 chomp($id_file);
 
-my $output_file =  ;
+my $output_file =  ; # Add file name
 chomp($output_file);
 
 # Open the input protein file
