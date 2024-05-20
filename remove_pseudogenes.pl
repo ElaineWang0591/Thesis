@@ -2,27 +2,50 @@
 use strict;
 use warnings;
 
-# Input and output file names
-my $input_file = 'genes.txt';
-my $output_file = 'filtered_genes.txt';
+my $protein_file = ;
+chomp($protein_file);
 
-# Open the input file for reading
-open my $IN, '<', $input_file or die "Cannot open $input_file: $!";
+my $id_file =  ;
+chomp($id_file);
 
-# Open the output file for writing
-open my $OUT, '>', $output_file or die "Cannot open $output_file: $!";
+my $output_file =  ;
+chomp($output_file);
 
-# Read the input file line by line
+# Open the input protein file
+open my $IN, '<', $protein_file or die "Cannot open $protein_file: $!";
+
+# Initialize a hash to store sequences
+my %hash;
+local $/ = ">";  # Change the input record separator
+readline($IN);   # Skip the first empty record
+
 while (my $line = <$IN>) {
     chomp $line;
-
-    # Skip lines that contain "pseudogene"
-    next if $line =~ /pseudogene/i;
-
-    # Print the line to the output file
-    print $OUT "$line\n";
+    $line =~ s/>//;
+    my ($name, $seq) = split(/\n/, $line, 2);
+    $seq =~ s/\n| |>//g;  # Remove newlines, spaces, and '>'
+    $hash{$name} = $seq;
 }
 
-# Close the input and output files
 close $IN;
+
+# Open the input ID file and output file
+open my $IN1, '<', $id_file or die "Cannot open $id_file: $!";
+open my $OUT, '>>', $output_file or die "Cannot open $output_file: $!";
+
+# Process each ID and print the corresponding sequence
+while (my $seq = <$IN1>) {
+    chomp $seq;
+    my @ids = split(/\n/, $seq);
+    foreach my $id (@ids) {
+        if (my $sequence = $hash{$id}) {
+            print $OUT ">$id\n$sequence\n";
+        } else {
+            print "Sorry, $id has not been found in the database\n";
+        }
+    }
+}
+
+close $IN1;
 close $OUT;
+
