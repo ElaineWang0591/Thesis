@@ -15,6 +15,10 @@
 4. Saves the parsed data in the parsed_ogs directory.
 
 
+#### 4. prefix_protein_id.pl
+1. Save the script to a file, e.g., prefix_gene_id.pl.
+2. Ensure the .pep.fa files you want to process are in the same directory as the script.
+3. Run the script using perl prefix_gene_id.pl.
 
 #### Steps to add the README to your repository
 1. Save the above text to a file named `README.md`.
