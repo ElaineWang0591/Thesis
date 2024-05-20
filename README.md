@@ -7,7 +7,7 @@
    git push origin main
 
 ## Script Descriptions
-1. clean_fasta.pl
+1. clean_fasta_sequence.pl
 Reads all .faa files in the current directory.
 Extracts the title of each file.
 Cleans the sequences by removing extraneous information from the headers.
