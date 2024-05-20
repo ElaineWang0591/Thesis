@@ -29,7 +29,7 @@ foreach my $file (@id_files) {
     }
     close $fh;
 
-    # Open the output file for the gene sequences
+    # Open the output file for gene sequences
     open my $out, '>', "$output_dir/${gene_name}_protein.fa" or die "Cannot open output file: $!";
 
     # Check and process each species' proteome file
