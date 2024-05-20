@@ -1,5 +1,6 @@
 ## Steps to add the README to your repository
 1. Save the above text to a file named `README.md`.
+   
 2. Add the `README.md` file to your repository:
    ```bash
    git add README.md
