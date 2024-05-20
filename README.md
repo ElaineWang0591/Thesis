@@ -2,15 +2,16 @@
 
 
 
-# Fasta Sequence Cleaner
-# Clean_fasta.pl
-# For cleaning FASTA sequence files. The script reads all `.faa` files in the current directory, removes extraneous information from the headers, and saves the cleaned sequences to a `clean` directory.
+#### 1. Clean_fasta.pl
+1. Reads all .faa files in the current directory.
+2. Extracts the title of each file.
+3. Cleans the sequences by removing extraneous information from the headers.
+4. Saves the cleaned sequences in the clean directory.
 
 
 
 
-### Steps to Add the README to Your Repository
-
+#### Steps to add the README to your repository
 1. Save the above text to a file named `README.md`.
 2. Add the `README.md` file to your repository:
    ```bash
